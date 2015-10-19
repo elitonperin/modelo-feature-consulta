@@ -11,19 +11,22 @@
 						<feature mandatory="true" name="EditarDeterminadaConsulta"/>
 						<feature mandatory="true" name="EditarQualquerConsulta"/>
 					</or>
-					<or mandatory="true" name="CancelarConsulta">
+					<or mandatory="true" name="ExcluirConsulta">
 						<feature mandatory="true" name="ExcluirDeterminadaConsulta"/>
 						<feature mandatory="true" name="ExcluirQualquerConsulta"/>
 					</or>
 					<feature mandatory="true" name="ArmazenarConsultasRealizadas"/>
-					<feature mandatory="true" name="BuscarConsulta"/>
+					<or mandatory="true" name="BuscarConsulta">
+						<feature mandatory="true" name="BuscarDeterminadaConsulta"/>
+						<feature mandatory="true" name="BuscarQualquerConsulta"/>
+					</or>
 				</or>
 				<or mandatory="true" name="VisualizarRelatorios">
 					<feature mandatory="true" name="VisualizarCronograma"/>
-					<feature mandatory="true" name="ConsultasPorPeriodo"/>
+					<feature mandatory="true" name="VisualizarConsultas"/>
 				</or>
 				<or mandatory="true" name="GerenciarUsuario">
-					<feature mandatory="true" name="CadastramentoUsuario"/>
+					<feature mandatory="true" name="CadastrarUsuario"/>
 					<or mandatory="true" name="EditarUsuario">
 						<feature mandatory="true" name="EditarDeterminadoUsuario"/>
 						<feature mandatory="true" name="EditarQualquerUsuario"/>
@@ -35,14 +38,14 @@
 					<feature mandatory="true" name="BuscarUsuario"/>
 				</or>
 				<or mandatory="true" name="GerenciarTipoUsuario">
-					<feature mandatory="true" name="CriarTipoUsuario"/>
-					<feature mandatory="true" name="AlteraTIpoUsuario"/>
+					<feature mandatory="true" name="CadastrarTipoUsuario"/>
+					<feature mandatory="true" name="EditarTipoUsuario"/>
 					<feature mandatory="true" name="ExcluirTipoUsuario"/>
-					<feature mandatory="true" name="BuscaTipoUsuario"/>
+					<feature mandatory="true" name="BuscarTipoUsuario"/>
 				</or>
 				<or mandatory="true" name="GerenciarCronograma">
-					<feature mandatory="true" name="MarcarDeterminadoCronograma"/>
-					<feature mandatory="true" name="MarcarQualquerCronograma"/>
+					<feature mandatory="true" name="CadastrarDeterminadoCronograma"/>
+					<feature mandatory="true" name="CadastrarQualquerCronograma"/>
 					<or mandatory="true" name="BuscarCronograma">
 						<feature mandatory="true" name="BuscarDeterminadoCronograma"/>
 						<feature mandatory="true" name="BuscarQualquerCronograma"/>
@@ -64,28 +67,64 @@
 							<var>BuscarUsuario</var>
 						</disj>
 					</disj>
-					<var>CadastramentoUsuario</var>
+					<var>CadastrarUsuario</var>
 				</imp>
 			</rule>
 			<rule>
 				<imp>
 					<var>VisualizarCronograma</var>
 					<disj>
-						<var>MarcarDeterminadoCronograma</var>
-						<var>MarcarQualquerCronograma</var>
+						<var>CadastrarDeterminadoCronograma</var>
+						<var>CadastrarQualquerCronograma</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>VisualizarConsultas</var>
+					<disj>
+						<var>CadastrarDeterminadasConsulta</var>
+						<var>CadastrarQualquerConsulta</var>
 					</disj>
 				</imp>
 			</rule>
 			<rule>
 				<imp>
 					<disj>
-						<var>EditarCronograma</var>
-						<var>BuscarCronograma</var>
+						<var>ExcluirConsulta</var>
+						<disj>
+							<var>BuscarConsulta</var>
+							<var>EditarConsulta</var>
+						</disj>
 					</disj>
 					<disj>
-						<var>MarcarDeterminadoCronograma</var>
-						<var>MarcarQualquerCronograma</var>
+						<var>CadastrarDeterminadasConsulta</var>
+						<var>CadastrarQualquerConsulta</var>
 					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<disj>
+						<var>BuscarCronograma</var>
+						<var>EditarCronograma</var>
+					</disj>
+					<disj>
+						<var>CadastrarDeterminadoCronograma</var>
+						<var>CadastrarQualquerCronograma</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<disj>
+						<var>EditarTipoUsuario</var>
+						<disj>
+							<var>BuscarTipoUsuario</var>
+							<var>ExcluirTipoUsuario</var>
+						</disj>
+					</disj>
+					<var>CadastrarTipoUsuario</var>
 				</imp>
 			</rule>
 		</constraints>
