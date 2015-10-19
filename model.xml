@@ -72,15 +72,6 @@
 			</rule>
 			<rule>
 				<imp>
-					<var>VisualizarCronograma</var>
-					<disj>
-						<var>CadastrarDeterminadoCronograma</var>
-						<var>CadastrarQualquerCronograma</var>
-					</disj>
-				</imp>
-			</rule>
-			<rule>
-				<imp>
 					<var>VisualizarConsultas</var>
 					<disj>
 						<var>CadastrarDeterminadasConsulta</var>
@@ -106,8 +97,11 @@
 			<rule>
 				<imp>
 					<disj>
-						<var>BuscarCronograma</var>
-						<var>EditarCronograma</var>
+						<var>VisualizarCronograma</var>
+						<disj>
+							<var>BuscarCronograma</var>
+							<var>EditarCronograma</var>
+						</disj>
 					</disj>
 					<disj>
 						<var>CadastrarDeterminadoCronograma</var>
