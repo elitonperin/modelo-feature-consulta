@@ -10,7 +10,11 @@
 					<feature mandatory="true" name="BuscarUsuario"/>
 				</and>
 				<and mandatory="true" name="TiposDeUsuario">
-					<feature mandatory="true" name="CriarTiposDeUsuarios"/>
+					<and mandatory="true" name="CriarTiposDeUsuarios">
+						<feature mandatory="true" name="Medico"/>
+						<feature mandatory="true" name="Funcionario"/>
+						<feature mandatory="true" name="Paciente"/>
+					</and>
 					<feature mandatory="true" name="BuscarTiposDeUsuarios"/>
 					<feature mandatory="true" name="EdicaoDosTiposDeUsuarios"/>
 					<feature mandatory="true" name="ExcluirDosTiposDeUsuarios"/>
