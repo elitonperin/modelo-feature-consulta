@@ -1,42 +1,94 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 	<featureModel chosenLayoutAlgorithm="1">
 		<struct>
-			<and abstract="true" mandatory="true" name="ModeloFeatureConsultas">
-				<and mandatory="true" name="Usuario">
-					<feature mandatory="true" name="Login"/>
-					<feature mandatory="true" name="CadastrarUsuario"/>
-					<feature mandatory="true" name="EditarUsuario"/>
-					<feature mandatory="true" name="ExcluirUsuario"/>
-					<feature mandatory="true" name="BuscarUsuario"/>
-				</and>
-				<and mandatory="true" name="TiposDeUsuario">
-					<and mandatory="true" name="CriarTiposDeUsuarios">
-						<feature mandatory="true" name="Medico"/>
-						<feature mandatory="true" name="Funcionario"/>
-						<feature mandatory="true" name="Paciente"/>
-					</and>
-					<feature mandatory="true" name="BuscarTiposDeUsuarios"/>
-					<feature mandatory="true" name="EdicaoDosTiposDeUsuarios"/>
-					<feature mandatory="true" name="ExcluirDosTiposDeUsuarios"/>
-				</and>
-				<and mandatory="true" name="Consulta">
-					<feature mandatory="true" name="Agendar"/>
-					<feature mandatory="true" name="Modificar"/>
-					<feature mandatory="true" name="Cancelar"/>
-					<feature mandatory="true" name="Cronograma"/>
-					<and mandatory="true" name="ArmazenarConsultasRealizadas">
-						<feature name="Exame"/>
-						<feature name="Diagnostico"/>
-						<feature mandatory="true" name="DemaisAtributos"/>
-					</and>
-				</and>
-				<or name="Relatorios">
+			<or abstract="true" mandatory="true" name="ModeloFeatureConsultas">
+				<or mandatory="true" name="GerenciarConsulta">
+					<or mandatory="true" name="CadastrarConsulta">
+						<feature mandatory="true" name="CadastrarDeterminadasConsulta"/>
+						<feature mandatory="true" name="CadastrarQualquerConsulta"/>
+					</or>
+					<or mandatory="true" name="EditarConsulta">
+						<feature mandatory="true" name="EditarDeterminadaConsulta"/>
+						<feature mandatory="true" name="EditarQualquerConsulta"/>
+					</or>
+					<or mandatory="true" name="CancelarConsulta">
+						<feature mandatory="true" name="ExcluirDeterminadaConsulta"/>
+						<feature mandatory="true" name="ExcluirQualquerConsulta"/>
+					</or>
+					<feature mandatory="true" name="ArmazenarConsultasRealizadas"/>
+					<feature mandatory="true" name="BuscarConsulta"/>
+				</or>
+				<or mandatory="true" name="VisualizarRelatorios">
 					<feature mandatory="true" name="VisualizarCronograma"/>
 					<feature mandatory="true" name="ConsultasPorPeriodo"/>
 				</or>
-			</and>
+				<or mandatory="true" name="GerenciarUsuario">
+					<feature mandatory="true" name="CadastramentoUsuario"/>
+					<or mandatory="true" name="EditarUsuario">
+						<feature mandatory="true" name="EditarDeterminadoUsuario"/>
+						<feature mandatory="true" name="EditarQualquerUsuario"/>
+					</or>
+					<or mandatory="true" name="ExcluirUsuario">
+						<feature mandatory="true" name="ExcluirDeterminadoUsuario"/>
+						<feature mandatory="true" name="ExcluirQualquerUsuario"/>
+					</or>
+					<feature mandatory="true" name="BuscarUsuario"/>
+				</or>
+				<or mandatory="true" name="GerenciarTipoUsuario">
+					<feature mandatory="true" name="CriarTipoUsuario"/>
+					<feature mandatory="true" name="AlteraTIpoUsuario"/>
+					<feature mandatory="true" name="ExcluirTipoUsuario"/>
+					<feature mandatory="true" name="BuscaTipoUsuario"/>
+				</or>
+				<or mandatory="true" name="GerenciarCronograma">
+					<feature mandatory="true" name="MarcarDeterminadoCronograma"/>
+					<feature mandatory="true" name="MarcarQualquerCronograma"/>
+					<or mandatory="true" name="BuscarCronograma">
+						<feature mandatory="true" name="BuscarDeterminadoCronograma"/>
+						<feature mandatory="true" name="BuscarQualquerCronograma"/>
+					</or>
+					<or mandatory="true" name="EditarCronograma">
+						<feature mandatory="true" name="EditarDeterminadoCronograma"/>
+						<feature mandatory="true" name="EditarQualquerCronograma"/>
+					</or>
+				</or>
+			</or>
 		</struct>
-		<constraints/>
+		<constraints>
+			<rule>
+				<imp>
+					<disj>
+						<var>EditarUsuario</var>
+						<disj>
+							<var>ExcluirUsuario</var>
+							<var>BuscarUsuario</var>
+						</disj>
+					</disj>
+					<var>CadastramentoUsuario</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>VisualizarCronograma</var>
+					<disj>
+						<var>MarcarDeterminadoCronograma</var>
+						<var>MarcarQualquerCronograma</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<disj>
+						<var>EditarCronograma</var>
+						<var>BuscarCronograma</var>
+					</disj>
+					<disj>
+						<var>MarcarDeterminadoCronograma</var>
+						<var>MarcarQualquerCronograma</var>
+					</disj>
+				</imp>
+			</rule>
+		</constraints>
 		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
 		<comments/>
 		<featureOrder userDefined="false"/>
