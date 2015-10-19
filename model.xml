@@ -2,29 +2,34 @@
 	<featureModel chosenLayoutAlgorithm="1">
 		<struct>
 			<and abstract="true" mandatory="true" name="ModeloFeatureConsultas">
-				<or mandatory="true" name="Usuario">
+				<and mandatory="true" name="Usuario">
 					<feature mandatory="true" name="Login"/>
-					<feature mandatory="true" name="Cadastrar_Usuario"/>
-					<feature mandatory="true" name="Editar_Usuario"/>
-					<feature mandatory="true" name="Excluir_Usuario"/>
-					<feature mandatory="true" name="Buscar_Usuario"/>
-				</or>
-				<and mandatory="true" name="Controle_de_Acesso">
-					<feature mandatory="true" name="Tipar"/>
-					<feature mandatory="true" name="Buscar"/>
-					<feature mandatory="true" name="Editar"/>
-					<feature mandatory="true" name="Excluir"/>
+					<feature mandatory="true" name="CadastrarUsuario"/>
+					<feature mandatory="true" name="EditarUsuario"/>
+					<feature mandatory="true" name="ExcluirUsuario"/>
+					<feature mandatory="true" name="BuscarUsuario"/>
 				</and>
-				<and mandatory="true" name="Consulta">
+				<and name="TiposDeUsuario">
+					<feature mandatory="true" name="CriarTiposDeUsuarios"/>
+					<feature mandatory="true" name="BuscarTiposDeUsuarios"/>
+					<feature mandatory="true" name="EdicaoDosTiposDeUsuarios"/>
+					<feature mandatory="true" name="ExcluirDosTiposDeUsuarios"/>
+				</and>
+				<and name="Consulta">
 					<feature mandatory="true" name="Agendar"/>
 					<feature mandatory="true" name="Modificar"/>
 					<feature mandatory="true" name="Cancelar"/>
 					<feature mandatory="true" name="Cronograma"/>
-					<and name="Armazenamento_Consulta">
+					<and name="ArmazenarConsultasRealizadas">
 						<feature name="Exame"/>
 						<feature name="Diagnostico"/>
 					</and>
 				</and>
+				<or name="Relatorios">
+					<feature mandatory="true" name="VisualizarCronograma"/>
+					<feature mandatory="true" name="ConsultasPorPeriodo"/>
+					<feature mandatory="true" name="NenhumRelatorio"/>
+				</or>
 			</and>
 		</struct>
 		<constraints/>
