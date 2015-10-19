@@ -9,26 +9,26 @@
 					<feature mandatory="true" name="ExcluirUsuario"/>
 					<feature mandatory="true" name="BuscarUsuario"/>
 				</and>
-				<and name="TiposDeUsuario">
+				<and mandatory="true" name="TiposDeUsuario">
 					<feature mandatory="true" name="CriarTiposDeUsuarios"/>
 					<feature mandatory="true" name="BuscarTiposDeUsuarios"/>
 					<feature mandatory="true" name="EdicaoDosTiposDeUsuarios"/>
 					<feature mandatory="true" name="ExcluirDosTiposDeUsuarios"/>
 				</and>
-				<and name="Consulta">
+				<and mandatory="true" name="Consulta">
 					<feature mandatory="true" name="Agendar"/>
 					<feature mandatory="true" name="Modificar"/>
 					<feature mandatory="true" name="Cancelar"/>
 					<feature mandatory="true" name="Cronograma"/>
-					<and name="ArmazenarConsultasRealizadas">
+					<and mandatory="true" name="ArmazenarConsultasRealizadas">
 						<feature name="Exame"/>
 						<feature name="Diagnostico"/>
+						<feature mandatory="true" name="DemaisAtributos"/>
 					</and>
 				</and>
 				<or name="Relatorios">
 					<feature mandatory="true" name="VisualizarCronograma"/>
 					<feature mandatory="true" name="ConsultasPorPeriodo"/>
-					<feature mandatory="true" name="NenhumRelatorio"/>
 				</or>
 			</and>
 		</struct>

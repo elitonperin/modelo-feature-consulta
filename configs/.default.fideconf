@@ -7,11 +7,11 @@
 11EditarUsuario
 11ExcluirUsuario
 11BuscarUsuario
-22TiposDeUsuario
-22CriarTiposDeUsuarios
-22BuscarTiposDeUsuarios
-22EdicaoDosTiposDeUsuarios
-22ExcluirDosTiposDeUsuarios
+21TiposDeUsuario
+21CriarTiposDeUsuarios
+21BuscarTiposDeUsuarios
+21EdicaoDosTiposDeUsuarios
+21ExcluirDosTiposDeUsuarios
 11Consulta
 11Agendar
 11Modificar
@@ -20,7 +20,7 @@
 21ArmazenarConsultasRealizadas
 12Exame
 22Diagnostico
+21DemaisAtributos
 22Relatorios
 22VisualizarCronograma
 22ConsultasPorPeriodo
-22NenhumRelatorio
